@@ -1,6 +1,7 @@
 package nyc.c4q.mustafizurmatin.rickandportyapi;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.holo_green_light)));
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
         signOutButton = (Button) findViewById(R.id.signOutButton);

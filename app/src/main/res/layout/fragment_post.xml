@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="nyc.c4q.mustafizurmatin.rickandportyapi.PostFragment">
 
     <Button
@@ -9,9 +10,12 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_gravity="end"
-        android:text="send praise"
+        android:text="Send"
+        android:textColor="@color/White"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
+        android:layout_toRightOf="@id/send_comment"
         android:elevation="10dp" />
 
     <EditText
@@ -22,8 +26,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="45dp"
-        android:background="#FFF"
+        android:background="@color/DarkSeaGreen"
         android:gravity="top"
-        android:hint="Comment on your character here" />
+        android:layout_toLeftOf="@id/send_comment"
+        android:textColorHint="@color/White"
+        android:hint="Click here to comment on this character" />
 
 </FrameLayout>

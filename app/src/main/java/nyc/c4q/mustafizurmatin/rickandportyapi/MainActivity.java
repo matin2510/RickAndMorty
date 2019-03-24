@@ -1,8 +1,10 @@
 package nyc.c4q.mustafizurmatin.rickandportyapi;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -33,16 +35,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.holo_green_light)));
 
         rickRV = findViewById(R.id.recycler_view);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rickRV.setLayoutManager(layoutManager);
 
+        serviceCall();
+
+
+    }
+
+    public void serviceCall() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        RickService rickService  = retrofit.create(RickService.class);
+        RickService rickService = retrofit.create(RickService.class);
         Call<RickAndMortyResponse> call = rickService.getCharacter();
         call.enqueue(new Callback<RickAndMortyResponse>() {
             @Override
@@ -55,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     rickAdapter = new RickAndMortyAdapter(resultsBeanList);
                     rickRV.setAdapter(rickAdapter);
 
-                }else {
+                } else {
                     Log.d(TAG, "on Response Error: " + response.errorBody().toString());
                 }
             }
@@ -69,4 +79,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
+

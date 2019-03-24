@@ -1,6 +1,7 @@
 package nyc.c4q.mustafizurmatin.rickandportyapi;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.holo_green_light)));
         auth = FirebaseAuth.getInstance();
 
         loginInputLayoutEmail = (TextInputLayout) findViewById(R.id.login_input_layout_email);

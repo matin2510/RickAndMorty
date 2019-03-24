@@ -23,13 +23,12 @@ import nyc.c4q.mustafizurmatin.rickandportyapi.views.FireBaseViewHolder;
 
 public class DetailsActivity extends AppCompatActivity {
     private static final String TAG = "DetailsActivity";
-    ImageView pokeminDetailImage;
-    TextView pokemonDetailText;
+    ImageView rickAndMortyDetailImage;
+    TextView DetailText;
     DatabaseReference firebaseDatabase;
     RecyclerView firbaseRV;
     Button commentButton;
     ResultsBean cardsBean;
-
 
 
     @Override
@@ -37,33 +36,21 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_details);
 
+
         Log.d(TAG, "onCreate: ran");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-    /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-     fab.setOnClickListener(new View.OnClickListener() {
-         @Override
-        public void onClick(View view) {
-
-             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-// Replace the contents of the container with the new fragment
-             ft.replace(R.id.fragment_container, new PostFragment());
-             ft.commit();
-             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                     .setAction("Action", null).show();
-         }
-       });*/
-        pokeminDetailImage = findViewById(R.id.pokemon_detail);
-        pokemonDetailText = findViewById(R.id.pokemon_description);
+        rickAndMortyDetailImage = findViewById(R.id.pokemon_detail);
+        DetailText = findViewById(R.id.pokemon_description);
         commentButton = findViewById(R.id.comment_button);
         commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PostFragment postFragment = new PostFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("Comment",cardsBean.getName());
+                bundle.putString("Comment", cardsBean.getName());
                 postFragment.setArguments(bundle);
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.fragment_container, postFragment);
@@ -79,9 +66,9 @@ public class DetailsActivity extends AppCompatActivity {
             Log.d(TAG, "onCreate: intent ran");
             Picasso.with(this)
                     .load(cardsBean.getImage()).resize(200, 200)
-                    .into(pokeminDetailImage);
+                    .into(rickAndMortyDetailImage);
 
-            pokemonDetailText.setText(cardsBean.getName());
+            DetailText.setText(cardsBean.getName());
 
 
         }
@@ -94,7 +81,6 @@ public class DetailsActivity extends AppCompatActivity {
                 firebaseDatabase.child("Comments").child(cardsBean.getName()));
         firbaseRV.setLayoutManager(new LinearLayoutManager(DetailsActivity.this));
         firbaseRV.setAdapter(rmAdapter);
-
 
 
     }
