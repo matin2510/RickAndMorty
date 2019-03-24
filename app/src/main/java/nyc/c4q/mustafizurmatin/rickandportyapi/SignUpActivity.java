@@ -39,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.holo_green_light)));
+        getSupportActionBar().setTitle("Sign up to begin discussion");
         FirebaseApp.initializeApp(this);
 
         auth = FirebaseAuth.getInstance();
